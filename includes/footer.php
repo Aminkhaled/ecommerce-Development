@@ -11,13 +11,13 @@
 <script src="js/script.js"></script>
 <script>
     function detail(id) {
-        var data ={"id":id};
+        var data = {"id":id};
         $.ajax({
             url:'/ecommerce/includes/detailmodal.php',
             method:'post',
             data:data,
             success:function(data){
-                $('body').append(data);
+                $('html,body').append(data);
                 $('#detail-modal').modal('toggle');
             },
             error:
@@ -27,6 +27,9 @@
             
         });
     }
+    $('#refresh').click(function() {
+        location.reload();
+    });
 </script>
 
 

@@ -25,7 +25,7 @@ include ('includes/leftsidebar.php');
                     <img src="<?php echo $product_image?>" alt="<?php echo $product?>">
                     <p class="list-price text-danger">List price: <s>$<?php echo $product_list_price?></s></p>
                     <p class="price">Price: $<?php echo$product_price ?></p>
-                    <button class="btn btn-sm btn-success" type="button" onclick="detail(<?php echo $product_id ?>)">Details</button>
+                    <button class="btn btn-sm btn-success" type="button" onclick="detail(<?php echo $product['id'] ?>)">Details</button>
                 </div>
                 <!--col-md-3-->
                 <?php endwhile; ?>
