@@ -1,5 +1,6 @@
+<?php ob_start() ?>
 <!--Modal Details-->
-<div class="modal fade details-1" id="details-1" tabindex="-1" role="dialog" aria-labelledby="details-1">
+<div class="modal fade details-1" id="detail-modal" tabindex="-1" role="dialog" aria-labelledby="details-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -82,3 +83,4 @@
     <!--modal-dialog-->
 </div>
 <!--modal main-->
+<?php echo ob_get_clean() ?>
