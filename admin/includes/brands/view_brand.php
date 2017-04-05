@@ -16,9 +16,9 @@
                                 <thead>
                                 <tr>
                                     <th>Brand</th>
-
-                                    <th>Delete</th>
                                     <th>Edit</th>
+                                    <th>Delete</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -29,7 +29,7 @@
                                     <tr>
 
                                         <td><?php echo $brand_name?></td>
-                                        <td><a href="#"><i class="fa fa-pencil"></i> Edit</a></td>
+                                        <td><a href="brands.php?source=edit_brands&b_id=<?php echo$brand['id'] ?>"><i class="fa fa-pencil"></i> Edit</a></td>
                                         <td><a href="brands.php?delete=<?php echo$brand['id'] ?>"><i class="icon-trash"></i> Delete</a></td>
                                     </tr>
                                 <?php endwhile; ?>

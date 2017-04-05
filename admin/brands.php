@@ -24,8 +24,17 @@ $brand_query = $conn->query($sql);
             if(isset($_GET['source'])) {
 
                 $source = $_GET['source'];
+            } else{
+                
+                $source = '';
+                }    
+                
 
                 switch ($source) {
+                    case 'add_brands':
+                        include('includes/brands/add_brand.php');
+                        break;
+                        
                     case 'edit_brands':
                         include('includes/brands/edit_brand.php');
                         break;
@@ -36,7 +45,7 @@ $brand_query = $conn->query($sql);
                 }
 
 
-            }
+            
             ?>
             
             
