@@ -1,3 +1,9 @@
+<?php
+$sql = "SELECT * FROM brand ORDER BY brand";
+global $conn;
+$brand_query = $conn->query($sql);
+
+?>
 <!-- Row -->
 <div class="row">
     <div class="col-sm-12">
@@ -44,3 +50,14 @@
     </div>
 </div>
 <!-- /Row -->
+<?php
+if(isset($_REQUEST['delete'])){
+    $delete_id = $_REQUEST['delete'];
+    $delete_query ="delete from brand WHERE id={$delete_id}";
+
+    $select_delete = $conn->query($delete_query);
+
+    header('location:../index.php');
+
+}
+?>
