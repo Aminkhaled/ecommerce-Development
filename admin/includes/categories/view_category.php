@@ -12,6 +12,10 @@ $category_query = $conn->query($sql);
                 <div class="pull-left">
                     <h6 class="panel-title txt-dark">simple editable table</h6>
                 </div>
+                <div class="pull-right">
+                    <a href="categories.php?source=add_categories" class="btn btn-success">Add new Category</a>
+
+                </div>
                 <div class="clearfix"></div>
             </div>
             <div class="panel-wrapper collapse in">

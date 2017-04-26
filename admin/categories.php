@@ -33,7 +33,7 @@ include('includes/head.php');
                         include('includes/categories/add_category.php');
                         break;
 
-                    case 'edit_brands':
+                    case 'edit_categories':
                         include('includes/categories/edit_category.php');
                         break;
 

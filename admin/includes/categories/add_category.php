@@ -1,29 +1,76 @@
 <?php
 if(isset($_POST['add'])){
-    $name = $_POST['name'];
+    $parent = htmlspecialchars($_POST['parent']);
+    $category = htmlspecialchars($_POST['name']);
+    $errors = [];
+    $sqlform = "select * from category WHERE category = '$category' AND parent='$parent'";
+    $result = $conn->query($sqlform);
+    $count = mysqli_num_rows($result);
+    
+    if ($category == ''){
+        $errors[] .='This Category not be left blank';
+    }
+    
+    if($count > 0){
+        $errors[] .= $category."has already exist,please choose another name";
+    }
+    
+    if(!empty($errors)){
+        $display = display_errors($errors);
+        echo "
+        <script>
+        $('document').ready(function() {
+          $('#errors').html('$display');
+        });
+</script>
+   <div id=\"errors\" class=\"alert alert-success\"></div>
 
-    $sql = "INSERT into brand (brand) VALUES('$name')";
-    global $conn;
-    $query_brand = $conn->query($sql);
+        ";
+    }else{
+        $insert_to_data = "insert into category(category,parent) VALUES('$category','$parent') ";
+        $query = $conn->query($insert_to_data);
+    }
+    
 }
 
 
 ?>
 
-<form class="form-horizontal" method="post" >
+<form class="form-horizontal"  method="post" >
     <fieldset>
 
         <!-- Form Name -->
         <legend>Add Brand</legend>
-
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="main"></label>
+            <div class="col-md-4">
+                <select name="parent" id="main" class="form-control">
+                    <option value="parent">Parent</option>
+                    <?php
+                         $sql = "select * from category WHERE parent = 0 ";
+                         global $conn;
+                         
+                         $result = mysqli_query($conn,$sql);
+                         while ($parento =mysqli_fetch_assoc($result)):
+                             $parent_id = $parento['id'];
+                              $cat_name = $parento['category'];
+                          echo "<option value='$parent_id'>$cat_name</option>";
+                         endwhile;
+                    ?>
+                </select>
+            </div>
+        </div>
+        
+        
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="name">Brand</label>
+            <label class="col-md-4 control-label" for="name">Child Category</label>
             <div class="col-md-4">
-                <input id="name" name="name"  type="text" placeholder="Brand" class="form-control input-md" required="">
+                <input id="name" name="name"  type="text" placeholder="child category" class="form-control input-md" required="">
 
             </div>
         </div>
+      
 
         <!-- Button (Double) -->
         <div class="form-group">
